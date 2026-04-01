@@ -6,14 +6,20 @@ RUN apk add --no-cache \
     py3-pip \
     wget \
     curl \
-    bash
+    bash \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    cargo
 
-RUN pip3 install --break-system-packages flask google-auth google-auth-httplib2 google-api-python-client requests
+RUN pip3 install --break-system-packages \
+    flask \
+    requests \
+    cryptography
 
 WORKDIR /app
-
 COPY server.py .
-
 EXPOSE 8080
-
 CMD ["python3", "server.py"]
