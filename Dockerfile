@@ -12,7 +12,11 @@ RUN apk add --no-cache \
     python3-dev \
     libffi-dev \
     openssl-dev \
-    cargo
+    cargo \
+    ttf-dejavu \
+    fontconfig
+
+RUN fc-cache -f
 
 RUN pip3 install --break-system-packages \
     flask \
